@@ -59,3 +59,49 @@
   background-color: #eee;
   margin: auto;
 }
+
+@media only screen and (max-width: 600px) {
+  .backdrop {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    opacity: 0.8;
+  }
+
+  .option-container {
+    z-index: 1;
+    position: absolute;
+    background-color: #fff;
+    top: 20px;
+    right: 20px;
+    bottom: 20px;
+    left: 20px;
+    border: 1px solid #eee;
+  }
+
+  .option {
+    position: relative;
+    font-size: 1.25rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .option-stock {
+    font-size: 1rem;
+  }
+
+  .option-price {
+    position: absolute;
+    right: 8px
+  }
+
+  .close {
+    font-weight: 700;
+    font-size: 2rem;
+    text-align: right;
+    padding-right: 8px;
+  }
+}

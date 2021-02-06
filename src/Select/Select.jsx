@@ -26,6 +26,8 @@ const Select = ({ options }) => {
 
     onToggle,
     handleSelect,
+
+    isMobile,
   } = useSelect(options);
 
   if (!options) {
@@ -33,7 +35,7 @@ const Select = ({ options }) => {
   }
 
   return (
-    <div ref={selectRef} >
+    <div ref={selectRef}>
       <div onClick={onToggle} className="display-value">
         <span>{value}</span>
         <span className="caret">&#94;</span>
@@ -41,6 +43,7 @@ const Select = ({ options }) => {
 
       {open && (
         <div className="option-container">
+          {isMobile && open && <div onClick={onToggle} className="close">x</div>}
           <div className="option-title">{options.length > 0 ? 'Taille :' : 'Article non disponible'}</div>
           {options.length > 0 && options.map((option, idx) => (
             <React.Fragment key={option.size} >
@@ -51,8 +54,9 @@ const Select = ({ options }) => {
         </div>
       )}
 
-
       <HiddenSelect ref={hiddenSelectRef} options={options} />
+
+      {isMobile && open && <div className="backdrop" />}
     </div>
   );
 };

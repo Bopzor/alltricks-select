@@ -7,6 +7,8 @@ const useSelect = (options) => {
   const [value, setValue] = useState();
   const [open, setOpen] = useState(false);
 
+  const [isMobile, setIsMobile] = useState(false);
+
   const selectRef = useRef();
   const hiddenSelectRef = useRef();
 
@@ -45,6 +47,13 @@ const useSelect = (options) => {
     return () => document.removeEventListener('mousedown', onClickAway);
   }, [onClickAway]);
 
+  useEffect(() => {
+    // Consider device as mobile
+    if (document.documentElement.offsetWidth <= 600) {
+      setIsMobile(true);
+    }
+  }, []);
+
   return {
     value: displayValue,
 
@@ -55,6 +64,8 @@ const useSelect = (options) => {
 
     onToggle,
     handleSelect,
+
+    isMobile,
   };
 };
 
